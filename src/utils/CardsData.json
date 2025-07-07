@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "icone": "./icone1.avif",
+    "image": "./Card 1.avif",
+    "textIcone": "Al Meeting Notes",
+    "Heading": "Perfect notes every time.",
+    "bgColor": "#fef3f1"
+  },
+
+  {
+    "id": 2,
+    "icone": "./icone2.avif",
+    "image": "./card 2.avif",
+    "textIcone": "Al Meeting Notes",
+    "Heading": "Perfect notes every time.",
+    "bgColor": "#f2f9ff"
+  },
+
+  {
+    "id": 3,
+    "icone": "./icone2.avif",
+    "image": "./card 3.avif",
+    "textIcone": "Al Meeting Notes",
+    "Heading": "Perfect notes every time.",
+    "bgColor": "#fcfbfb"
+  },
+
+  {
+    "id": 4,
+    "icone": "./icone4.avif",
+    "image": "./card 4.avif",
+    "textIcone": "Al Meeting Notes",
+    "Heading": "Perfect notes every time.",
+    "bgColor": "#f2fafa"
+  }
+]

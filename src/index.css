@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "KFO1";
+  src: url(./assets/Font/KFO1.woff2);
+}
+
+@font-face {
+  font-family: "KFO2";
+  src: url(./assets/Font/KFO2.woff2);
+}
+
+@font-face {
+  font-family: "Notion-Bold";
+  src: url(./assets/Font/NotionInter-Bold.woff2);
+}
+
+@font-face {
+  font-family: "Notion-Regular";
+  src: url(./assets/Font/NotionInter-Regular.woff2);
+}
+
+@font-face {
+  font-family: "Notion-SemiBold";
+  src: url(./assets/Font/NotionInter-SemiBold.woff2);
+}
