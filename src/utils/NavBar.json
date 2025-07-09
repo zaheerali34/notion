@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Features",
+    "items": [
+      { "title": "Notion AI", "description": "Lorem ipsum dolor sit." },
+      { "title": "Doc", "description": "Lorem ipsum dolor sit." },
+      { "title": "Wikis", "description": "Lorem ipsum dolor sit." },
+      { "title": "Projects", "description": "Lorem ipsum dolor sit." }
+    ]
+  },
+  {
+    "title": "Features",
+    "items": [
+      { "title": "Enterprise Search", "description": "Lorem ipsum dolor sit.", "isNew": true },
+      { "title": "AI Meeting Notes", "description": "Lorem ipsum dolor sit.", "isNew": true },
+      { "title": "Forms", "description": "Lorem ipsum dolor sit." },
+      { "title": "Site", "description": "Lorem ipsum dolor sit." }
+    ]
+  },
+  {
+    "title": "Get Started",
+    "items": [
+      { "title": "Browse marketplace", "description": "Templates for everything" },
+      { "title": "Browse marketplace", "description": "Templates for everything" },
+      { "title": "Browse marketplace", "description": "Templates for everything" }
+    ]
+  }
+]
