@@ -1,9 +1,9 @@
-import LeaginPage from './Pages/LeaginPage.js'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
     <div>
-      <LeaginPage />
+      <Outlet />
     </div>
   )
 }

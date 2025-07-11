@@ -2,6 +2,7 @@ import { useState } from "react";
 import Logo from "../../assets/notion.png";
 import "remixicon/fonts/remixicon.css";
 import NotionBar from "../UI/NotionBar";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [showNotionBar, setShowNotionBar] = useState(false);
@@ -10,10 +11,10 @@ function Header() {
   const handleMouseLeave = () => setShowNotionBar(false);
 
   return (
-    <div className="w-full py-5 px-6 flex items-center justify-between font-[Notion-Regular]">
-      <div className="w-[30px]">
+    <div className="w-full py-5 px-6 flex items-center justify-between font-[Notion-Regular] fixed top-0 left-0 right-0 border-2 border-amber-50 bg-white z-50">
+      <NavLink to={'/'} className="w-[30px]">
         <img src={Logo} alt="Logo" className="w-full" />
-      </div>
+      </NavLink>
 
       <div className="flex items-center space-x-60">
         {showNotionBar && (
@@ -59,12 +60,12 @@ function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="hover:bg-zinc-100 transition-all duration-200 py-1 px-3 rounded-sm cursor-pointer">
+          <NavLink to={'/login'} className="hover:bg-zinc-100 transition-all duration-200 py-1 px-3 rounded-sm cursor-pointer">
             Log in
-          </button>
-          <button className="bg-black cursor-pointer text-white px-4 py-2 rounded-md text-[15px] font-semibold hover:bg-zinc-800 transition-all duration-300">
+          </NavLink>
+          <NavLink to={"/signup"} className="bg-black cursor-pointer text-white px-4 py-2 rounded-md text-[15px] font-semibold hover:bg-zinc-800 transition-all duration-300">
             Get Notion free
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>
