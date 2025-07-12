@@ -38,11 +38,11 @@ const items = [
 
 function LogoCard() {
   return (
-    <div className="flex items-center flex-wrap py-10">
+    <div className="flex items-center flex-wrap py-10 max-lg:gap-3 max-sm:flex-col max-lg:justify-between max-sm:py-4">
       {items.map((item, index) => (
         <div
           key={index}
-          className="w-2/6 flex items-start justify-center flex-col py-2"
+          className="w-2/6 max-lg:w-full flex items-start justify-center flex-col py-2"
         >
           <img src={item.logo} alt="" className="w-[80px] py-3" />
           <p className="hover:to-blue-500 cursor-pointer">{item.pre}</p>

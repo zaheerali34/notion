@@ -2,7 +2,7 @@ import LogoCard from "./LogoCard";
 
 function Stories() {
   return (
-    <div className="w-full h-full py-8 px-25">
+    <div className="w-full h-full py-8 px-25 max-xl:px-15 max-sm:px-4">
       <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,12 +20,12 @@ function Stories() {
       </div>
 
       <div className="w-full h-full flex items-center flex-col justify-center mt-8 bg-[#f6f5f4] py-8 px-10 rounded-xl">
-        <div className="w-full flex items-center justify-between gap-10 flex-wrap">
-          <div className="w-2/4 flex items-start flex-col gap-2">
+        <div className="w-full flex items-center justify-between max-xl:flex-col gap-10 flex-wrap">
+          <div className="w-2/4 flex items-start flex-col gap-2 max-xl:w-full ">
             <h2 className="text-[2rem] font-bold font-[Notion-Regular]">
               OpenAI
             </h2>
-            <p className="font-[one] text-[2.7rem] leading-[40px]">
+            <p className="font-[one] text-[2.7rem] leading-[40px] max-xl:text-[2rem] max-sm:text-[1.5rem] max-sm:leading-8">
               There’s power in a single platform where you can do all your work.
               Notion is that single place.
             </p>
@@ -34,7 +34,7 @@ function Stories() {
             </span>
           </div>
 
-          <div className="w-[25vw] relative">
+          <div className="w-[25vw] relative max-xl:w-full">
             <img src="./Homepage.avif" alt="" className="w-full rounded-2xl" />
             <i className="ri-play-circle-fill absolute bottom-0 right-2 text-[50px] text-white"></i>
           </div>

@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/notion.png";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { SignIn } from '@clerk/clerk-react';
 
 const languages = [
   "English (US)",
@@ -121,37 +122,8 @@ function Login() {
         </div>
 
         <div className="mt-6">
-          {LoginOptions.map((item, index) => (
-            <nav key={index} className="w-[20rem]">
-              <ul>
-                <li className="w-full flex items-center gap-10 py-2 bg-white shadow-sm px-4 border-1 border-amber-50 mt-2 rounded-md justify-start cursor-pointer hover:bg-gray-100 transition-all duration-500">
-                  <img src={item.logo} alt="" className="w-[20px]" />
-                  <label className="text-sm font-[Notion-Regular] font-semibold text-zinc-700">
-                    {item.label}
-                  </label>
-                </li>
-              </ul>
-            </nav>
-          ))}
-
-          <form className="w-[20rem] flex items-start flex-col gap-2 mt-8">
-            <label className="text-[14px] font-[Notion-Regular] text-gray-700">
-              Email
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your email address..."
-              className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
-            />
-            <span className="text-gray-400 text-[13px]">
-              Use an organization email to easily collaborate with teammates
-            </span>
-            <button className="w-full bg-blue-500 text-white text-center py-2 mt-2 transition-all duration-500 rounded-md cursor-pointer hover:bg-blue-400 font-semibold">
-              Continue
-            </button>
-
-            <p className="text-[12px] text-gray-700">By continuing, you acknowledge that you understand and agree to the <span className="text-blue-500">Terms & Conditions</span> and <span className="text-blue-500">Privacy Policy</span></p>
-          </form>
+          {/* Clerk SignIn component replaces the manual form and options */}
+          <SignIn appearance={{ elements: { card: 'shadow-sm rounded-md', formButtonPrimary: 'bg-blue-500 hover:bg-blue-400 text-white font-semibold', headerTitle: 'text-[1.4rem] font-[Notion-Regular] font-bold', headerSubtitle: 'text-[1.4rem] font-[Notion-Regular] font-bold text-gray-400' } }} />
         </div>
       </div>
     </div>

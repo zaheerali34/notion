@@ -9,7 +9,7 @@ import ramp from '../../assets/ramp.avif'
 
 function Logo() {
   return (
-    <div className="w-full flex items-center justify-between py-4 px-8 mt-8">
+    <div className="w-full flex items-center justify-between py-4 px-8 mt-8 max-xl:justify-center max-xl:flex-wrap max-xl:gap-5">
       <img src={cursor} alt="" className='w-[100px]'/>
       <img src={OpenAI} alt="" className='w-[100px]'/>
       <img src={Perplexity} alt=""className='w-[100px]'/>

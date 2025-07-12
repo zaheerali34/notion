@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/notion.png";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import Auth from './Auth.tsx'
 
 const languages = [
   "English (US)",
@@ -53,9 +54,8 @@ const languages = [
   "Latvian",
   "Lithuanian",
   "Slovenian",
-  "Icelandic"
+  "Icelandic",
 ];
-
 
 const SignupOptions = [
   { id: 1, logo: "./Google__G__logo.svg.webp", label: "Continue with Google" },
@@ -71,6 +71,7 @@ function Signup() {
 
   return (
     <div className="w-full h-screen p-6 overflow-hidden">
+      <Auth />
       <div className="w-full flex items-center gap-2">
         <NavLink to={"/"} className="w-[30px]">
           <img src={Logo} alt="Logo" className="w-full" />
@@ -150,7 +151,11 @@ function Signup() {
               Continue
             </button>
 
-            <p className="text-[12px] text-gray-700">By continuing, you acknowledge that you understand and agree to the <span className="text-blue-500">Terms & Conditions</span> and <span className="text-blue-500">Privacy Policy</span></p>
+            <p className="text-[12px] text-gray-700">
+              By continuing, you acknowledge that you understand and agree to
+              the <span className="text-blue-500">Terms & Conditions</span> and{" "}
+              <span className="text-blue-500">Privacy Policy</span>
+            </p>
           </form>
         </div>
       </div>

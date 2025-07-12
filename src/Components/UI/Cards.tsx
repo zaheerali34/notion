@@ -2,9 +2,9 @@ import CardData from "../../utils/CardsData.json";
 
 function Cards() {
   return (
-    <div className="w-full my-6 font-[Notion-Regular] flex items-center flex-wrap gap-5 justify-center">
+    <div className="w-full my-6 font-[Notion-Regular] flex items-center flex-wrap gap-5 justify-center max-lg:flex-col max-lg:justify-center max-xl:px-15 max-sm:px-4">
       {CardData.map((items, index) => (
-        <div key={index} className="w-[42%] h-2/4 p-6 rounded-[15px] hover:shadow-md transition-all duration-200 cursor-pointer" style={{backgroundColor: items.bgColor}}>
+        <div key={index} className="w-[42%] h-2/4 p-6 rounded-[15px] hover:shadow-md transition-all duration-200 cursor-pointer max-xl:w-full" style={{backgroundColor: items.bgColor}}>
           <div className="flex items-center gap-2">
             <img src={items.icone} alt="" className="w-[30px]" />
             <h3 className="font-bold text-sm text-zinc-900">
