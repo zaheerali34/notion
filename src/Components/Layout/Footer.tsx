@@ -47,7 +47,7 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="flex item-center justify-between flex-wrap gap-4 max-md:justify-center max-[480px]:flex-col">
           {/* Logo and Social Links */}
           <div className="lg:col-span-1">
             <div className="mb-6">
