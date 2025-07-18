@@ -8,7 +8,7 @@ import LeaginPage from './Pages/LeaginPage.tsx';
 import Login from './Components/Forms/Login.tsx';
 import { ClerkProvider } from '@clerk/clerk-react'
 import DashoboardPage from './Pages/DashoboardPage.tsx';
-import NewPage from './Dashboard/NewPage.tsx';
+import NewPage from './Dashboard/NewPage.jsx';
 
 const router = createBrowserRouter([
   {
