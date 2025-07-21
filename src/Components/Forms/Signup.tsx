@@ -2,60 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../assets/notion.png";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import Auth from './Auth.tsx'
-
-const languages = [
-  "English (US)",
-  "English (UK)",
-  "Español",
-  "Français",
-  "Deutsch",
-  "日本語",
-  "한국어",
-  "中文 (简体)",
-  "中文 (繁體)",
-  "Português (Brasil)",
-  "Português (Portugal)",
-  "Italiano",
-  "Nederlands",
-  "Русский",
-  "हिन्दी",
-  "বাংলা",
-  "தமிழ்",
-  "తెలుగు",
-  "ગુજરાતી",
-  "اردو",
-  "ไทย",
-  "Tiếng Việt",
-  "Türkçe",
-  "Polski",
-  "Українська",
-  "Čeština",
-  "Slovenčina",
-  "Română",
-  "Ελληνικά",
-  "עברית",
-  "العربية",
-  "فارسی",
-  "ภาษาไทย",
-  "Suomi",
-  "Svenska",
-  "Norsk",
-  "Dansk",
-  "Magyar",
-  "Hrvatski",
-  "Bahasa Indonesia",
-  "Bahasa Melayu",
-  "Filipino",
-  "IsiZulu",
-  "Afrikaans",
-  "Kiswahili",
-  "Estonian",
-  "Latvian",
-  "Lithuanian",
-  "Slovenian",
-  "Icelandic",
-];
+import Language from './Languages';
 
 const SignupOptions = [
   { id: 1, logo: "./Google__G__logo.svg.webp", label: "Continue with Google" },
@@ -71,7 +18,6 @@ function Signup() {
 
   return (
     <div className="w-full h-screen p-6 overflow-hidden">
-      <Auth />
       <div className="w-full flex items-center gap-2">
         <NavLink to={"/"} className="w-[30px]">
           <img src={Logo} alt="Logo" className="w-full" />
@@ -94,7 +40,7 @@ function Signup() {
 
           {isLanguageOpen && (
             <div className="h-[70vh] w-[17rem] absolute top-14 mb-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg min-w-[160px] z-10 overflow-scroll">
-              {languages.map((lang) => (
+              {Language.map((lang) => (
                 <button
                   key={lang}
                   onClick={() => {

@@ -1,62 +1,55 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Signup from './Components/Forms/Signup.tsx';
-import LeaginPage from './Pages/LeaginPage.tsx';
-import Login from './Components/Forms/Login.tsx';
-import { ClerkProvider } from '@clerk/clerk-react'
-import DashoboardPage from './Pages/DashoboardPage.tsx';
-import NewPage from './Dashboard/NewPage.jsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Signup from "./Components/Forms/Signup.tsx";
+import LeaginPage from "./Pages/LeaginPage.tsx";
+import Login from "./Components/Forms/Login.tsx";
+import { ClerkProvider } from "@clerk/clerk-react";
+import DashoboardPage from "./Pages/DashoboardPage.tsx";
+import NewPage from "./Dashboard/NewPage.jsx";
+import Protected from "./Components/Forms/Protected.tsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
-        path: '/',
-        element: <LeaginPage />
+        path: "/",
+        element: <LeaginPage />,
       },
 
       {
-        path: '/login',
-        element: <Login />
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: '/signup',
-        element: <Signup />
+        path: "/signup",
+        element: <Signup />,
       },
 
       {
-        path: '/dashoboard',
-        element: <DashoboardPage />
+        path: "/dashoboard",
+        element: <Protected Component={DashoboardPage} />,
       },
 
       {
-        path: '/newpage/:id',
-        element: <NewPage />
+        path: "/newpage/:id",
+        element: <NewPage />,
       },
 
-       {
-        path: '*',
-        element: <div>❌ Page Not Found</div>
-      }
-    ]
-  }
+      {
+        path: "*",
+        element: <div>❌ Page Not Found</div>,
+      },
+    ],
+  },
 ]);
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error('Missing Publishable Key')
-}
-
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl='/'>
-      <RouterProvider router={router} />
-    </ClerkProvider>
-  </StrictMode>,
-)
+    <RouterProvider router={router} />
+  </StrictMode>
+);

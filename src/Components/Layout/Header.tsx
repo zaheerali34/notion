@@ -42,12 +42,12 @@ function Header() {
                   Notion <i className="ri-arrow-down-s-line"></i>
                 </li>
               </div>
-              <NavLink
+              {/* <NavLink
                 to={"/dashoboard"}
                 className="hover:bg-zinc-100 transition-all duration-200 py-1 px-3 rounded-sm cursor-pointer"
               >
                 Dashboard
-              </NavLink>
+              </NavLink> */}
               <li className="hover:bg-zinc-100 transition-all duration-200 py-1 px-3 rounded-sm cursor-pointer">
                 Mail{" "}
                 <span className="bg-blue-100 text-blue-800 py-[1px] px-2 rounded-2xl text-[12px] font-semibold hover:bg-zinc-100 transition-all duration-200 cursor-pointer">
