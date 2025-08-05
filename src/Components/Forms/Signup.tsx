@@ -1,20 +1,37 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/notion.png";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import Language from './Languages';
+import Language from "./Languages.js";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../Auth/firebase.js";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const SignupOptions = [
-  { id: 1, logo: "./Google__G__logo.svg.webp", label: "Continue with Google" },
-  { id: 2, logo: "./download.png", label: "Continue with Apple" },
-  { id: 3, logo: "./download (1).png", label: "Continue with Facebook" },
-  { id: 4, logo: "./download (2).png", label: "Continue with GitHub" },
-  { id: 5, logo: "./images.png", label: "Continue with Email" },
-];
+const auth = getAuth(app);
 
 function Signup() {
+  const navigate = useNavigate();
   const [selectedLanguage, setSelectedLanguage] = useState("English (US)");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+
+  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
+
+  const userSignup = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await createUserWithEmailAndPassword(auth, Email, Password);
+      localStorage.setItem("login", "true");
+      toast.success("User Created Successfully");
+      navigate("/dashoboard"); // ✅
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      toast.error("Error creating user: " + errorMessage);
+      alert("Signup failed: " + errorMessage);
+    }
+  };
 
   return (
     <div className="w-full h-screen p-6 overflow-hidden">
@@ -68,19 +85,6 @@ function Signup() {
         </div>
 
         <div className="mt-6">
-          {SignupOptions.map((item, index) => (
-            <nav key={index} className="w-[20rem]">
-              <ul>
-                <li className="w-full flex items-center gap-10 py-2 bg-white shadow-sm px-4 border-1 border-amber-50 mt-2 rounded-md justify-start cursor-pointer hover:bg-gray-100 transition-all duration-500">
-                  <img src={item.logo} alt="" className="w-[20px]" />
-                  <label className="text-sm font-[Notion-Regular] font-semibold text-zinc-700">
-                    {item.label}
-                  </label>
-                </li>
-              </ul>
-            </nav>
-          ))}
-
           <form className="w-[20rem] flex items-start flex-col gap-2 mt-8">
             <label className="text-sm font-[Notion-Regular] text-gray-700">
               Work email
@@ -88,12 +92,24 @@ function Signup() {
             <input
               type="text"
               placeholder="Enter your email address..."
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
             />
             <span className="text-gray-400 text-[13px]">
               Use an organization email to easily collaborate with teammates
             </span>
-            <button className="w-full bg-blue-500 text-white text-center py-2 mt-2 transition-all duration-500 rounded-md cursor-pointer hover:bg-blue-400 font-semibold">
+            <button
+              onClick={userSignup}
+              className="w-full bg-blue-500 text-white text-center py-2 mt-2 transition-all duration-500 rounded-md cursor-pointer hover:bg-blue-400 font-semibold"
+            >
               Continue
             </button>
 

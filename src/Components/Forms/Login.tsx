@@ -1,34 +1,35 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/notion.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import Language from "./Languages";
+import Language from "./Languages.js";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../Auth/firebase.js";
+import { toast } from "react-toastify";
 
-const SignupOptions = [
-  { id: 1, logo: "./Google__G__logo.svg.webp", label: "Continue with Google" },
-  { id: 2, logo: "./download.png", label: "Continue with Apple" },
-  { id: 3, logo: "./download (1).png", label: "Continue with Facebook" },
-  { id: 4, logo: "./download (2).png", label: "Continue with GitHub" },
-  { id: 5, logo: "./images.png", label: "Continue with Email" },
-];
+const auth = getAuth(app);
 
-function Signup() {
+function Login() {
+  const navigate = useNavigate();
+
   const [selectedLanguage, setSelectedLanguage] = useState("English (US)");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
 
-  const login = () => {
-    localStorage.setItem("login", "true");
-    navigate("/dashoboard");
-  };
+  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
 
-  let navigate = useNavigate();
+  const loginUser = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    let login = localStorage.getItem("login");
-    if (!login) {
-      navigate("/dashoboard");
+    try {
+      await signInWithEmailAndPassword(auth, Email, Password);
+      localStorage.setItem("login", "true");
+      toast.success("Login successful!");
+      navigate("/dashoboard"); // ✅
+    } catch (error: any) {
+      toast.error("Login failed: " + error.message);
     }
-  }, []);
+  };
 
   return (
     <div className="w-full h-screen p-6 overflow-hidden">
@@ -74,7 +75,7 @@ function Signup() {
       <div className="w-full h-full flex items-center justify-center flex-col">
         <div>
           <h3 className="text-[1.4rem] font-[Notion-Regular] font-bold leading-5">
-            Think it. Make it.
+            Your AI workspace.
           </h3>
           <h3 className="text-[1.4rem] font-[Notion-Regular] font-bold text-gray-400">
             Log in to your Notion account
@@ -82,33 +83,29 @@ function Signup() {
         </div>
 
         <div className="mt-6">
-          {SignupOptions.map((item, index) => (
-            <nav key={index} className="w-[20rem]">
-              <ul>
-                <li className="w-full flex items-center gap-10 py-2 bg-white shadow-sm px-4 border-1 border-amber-50 mt-2 rounded-md justify-start cursor-pointer hover:bg-gray-100 transition-all duration-500">
-                  <img src={item.logo} alt="" className="w-[20px]" />
-                  <label className="text-sm font-[Notion-Regular] font-semibold text-zinc-700">
-                    {item.label}
-                  </label>
-                </li>
-              </ul>
-            </nav>
-          ))}
-
-          <form className="w-[20rem] flex items-start flex-col gap-2 mt-8">
+          <form onSubmit={loginUser} className="w-[20rem] flex items-start flex-col gap-2 mt-8">
             <label className="text-sm font-[Notion-Regular] text-gray-700">
-              Email
+              Work email
             </label>
             <input
               type="text"
               placeholder="Enter your email address..."
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
             />
             <span className="text-gray-400 text-[13px]">
               Use an organization email to easily collaborate with teammates
             </span>
             <button
-              onClick={login}
+              type="submit"
               className="w-full bg-blue-500 text-white text-center py-2 mt-2 transition-all duration-500 rounded-md cursor-pointer hover:bg-blue-400 font-semibold"
             >
               Continue
@@ -126,4 +123,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;

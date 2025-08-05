@@ -1,15 +1,15 @@
-import { StrictMode } from "react";
+import { StrictMode} from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Signup from "./Components/Forms/Signup.tsx";
+import Signup from "./Components/Forms/Signup.js";
 import LeaginPage from "./Pages/LeaginPage.tsx";
-import Login from "./Components/Forms/Login.tsx";
-import { ClerkProvider } from "@clerk/clerk-react";
+import Login from "./Components/Forms/Login.jsx";
 import DashoboardPage from "./Pages/DashoboardPage.tsx";
-import NewPage from "./Dashboard/NewPage.jsx";
+import NewPage from "./Dashboard/NewPage.js";
 import Protected from "./Components/Forms/Protected.tsx";
+
 
 const router = createBrowserRouter([
   {
@@ -48,8 +48,15 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+
+
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+} else {
+  console.error("Root element not found");
+}

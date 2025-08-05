@@ -15,10 +15,12 @@
     "@blocknote/react": "^0.33.0",
     "@clerk/clerk-react": "^5.33.0",
     "@tailwindcss/vite": "^4.1.11",
+    "firebase": "^12.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3",
+    "react-toastify": "^11.0.5",
     "remixicon": "^4.6.0",
     "tailwindcss": "^4.1.11",
     "uuid": "^11.1.0"
