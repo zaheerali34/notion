@@ -14,24 +14,36 @@ function Signup() {
   const navigate = useNavigate();
   const [selectedLanguage, setSelectedLanguage] = useState("English (US)");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-
   const [Password, setPassword] = useState("");
   const [Email, setEmail] = useState("");
+  const [ErrorPass, setErrorPass] = useState('');
 
   const userSignup = async (e: FormEvent) => {
     e.preventDefault();
+
+    // if (!Email || !Password){
+    //   alert('Email and Password Add');
+    // }
+
+    if (Password.length < 6){
+      setErrorPass('Passworld 6 characters Not');
+    }
 
     try {
       await createUserWithEmailAndPassword(auth, Email, Password);
       localStorage.setItem("login", "true");
       toast.success("User Created Successfully");
-      navigate("/dashoboard"); // ✅
+      navigate("/dashoboard");
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Unknown error";
       toast.error("Error creating user: " + errorMessage);
-      alert("Signup failed: " + errorMessage);
     }
+
+    setEmail('');
+    setPassword('');
+    setErrorPass('');
   };
+
 
   return (
     <div className="w-full h-screen p-6 overflow-hidden">
@@ -103,6 +115,9 @@ function Signup() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
             />
+
+            {ErrorPass && <span className="text-red-500">{ErrorPass}</span>}            
+
             <span className="text-gray-400 text-[13px]">
               Use an organization email to easily collaborate with teammates
             </span>

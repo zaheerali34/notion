@@ -14,21 +14,30 @@ function Login() {
 
   const [selectedLanguage, setSelectedLanguage] = useState("English (US)");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-
   const [Password, setPassword] = useState("");
   const [Email, setEmail] = useState("");
+  const [ErrorPass, setErrorPass] = useState("");
 
   const loginUser = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!Email || !Password) {
+      setErrorPass("Email and Password are required");
+      return;
+    }
 
     try {
       await signInWithEmailAndPassword(auth, Email, Password);
       localStorage.setItem("login", "true");
       toast.success("Login successful!");
-      navigate("/dashoboard"); // ✅
+      navigate("/dashoboard");
     } catch (error: any) {
       toast.error("Login failed: " + error.message);
     }
+
+    setEmail("");
+    setPassword("");
+    setErrorPass("");
   };
 
   return (
@@ -83,7 +92,10 @@ function Login() {
         </div>
 
         <div className="mt-6">
-          <form onSubmit={loginUser} className="w-[20rem] flex items-start flex-col gap-2 mt-8">
+          <form
+            onSubmit={loginUser}
+            className="w-[20rem] flex items-start flex-col gap-2 mt-8"
+          >
             <label className="text-sm font-[Notion-Regular] text-gray-700">
               Work email
             </label>
@@ -101,6 +113,9 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full py-2 px-2 border-2 border-gray-100 rounded-md outline-blue-500"
             />
+
+            {ErrorPass && <span className="text-red-500">{ErrorPass}</span>}
+
             <span className="text-gray-400 text-[13px]">
               Use an organization email to easily collaborate with teammates
             </span>

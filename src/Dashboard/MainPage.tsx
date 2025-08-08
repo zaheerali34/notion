@@ -11,7 +11,7 @@ function MainPage() {
   };
 
   return (
-    <div className="w-full h-screen bg-zinc-900 py-3 flex items-center justify-center">
+    <div className="w-full h-screen bg-zinc-900 py-3 px-4 flex items-center justify-center">
       <div className="flex items-start justify-center flex-col">
         <div>
           <span className="text-zinc-600 text-sm font-semibold">
