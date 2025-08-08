@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC, ReactElement } from "react";
 import {
   FaSlack,
   FaGoogleDrive,
@@ -16,7 +16,7 @@ import {
 
 type IntegrationItem = {
   name: string;
-  icon: React.ReactElement;
+  icon: ReactElement;
 };
 
 const leftIntegrations: IntegrationItem[] = [

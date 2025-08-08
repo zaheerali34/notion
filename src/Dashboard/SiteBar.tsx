@@ -23,7 +23,7 @@ function SiteBar() {
   };
   return (
     <>
-      {meun ? <i onClick={toggleMenu} className="ri-arrow-left-double-line text-zinc-400 text-3xl cursor-pointer hover:text-zinc-500 transition-all duration-500 relative left-[20px] top-[10px]"></i> : <div className="site-bar w-[15rem] h-screen fixed top-0 left-0 bg-[#1c1c1c] overflow-hidden shadow-2xl z-50 border-r-1 rounded-md border-zinc-600">
+      {meun ? <i onClick={toggleMenu} className="ri-arrow-left-double-line text-zinc-400 text-3xl cursor-pointer hover:text-zinc-500 transition-all duration-500 absolute left-[20px] top-[10px]"></i> : <div className="site-bar w-[15rem] h-screen fixed top-0 left-0 bg-[#1c1c1c] overflow-hidden shadow-2xl z-50 border-r-1 rounded-md border-zinc-600">
       <i onClick={toggleMenu} className="ri-arrow-left-double-line text-zinc-400 text-3xl cursor-pointer hover:text-zinc-500 transition-all duration-500 relative left-[200px] top-[10px]"></i>
       <br />
       <button onClick={()=> signOut(auth)} className="bg-zinc-700 hover:bg-zinc-500 transition-all duration-200 text-white py-2 px-4 rounded-md relative top-2 left-4 cursor-pointer">Sign Out</button>

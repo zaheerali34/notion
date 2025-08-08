@@ -1,22 +1,24 @@
 import MainPage from "../Dashboard/MainPage";
 import SiteBar from "../Dashboard/SiteBar";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, type User } from "firebase/auth";
 import Login from "../Components/Forms/Login";
 import { useEffect, useState } from "react";
 
 const auth = getAuth();
 
 function DashoboardPage() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
 useEffect(() => {
-  onAuthStateChanged(auth, (user) => {
-    if (user){
-      setUser(user);
+  const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+    if (authUser){
+      setUser(authUser);
     } else {
       setUser(null);
     }
   });
+
+  return () => unsubscribe();
 }, []);
 
 if (user === null){
