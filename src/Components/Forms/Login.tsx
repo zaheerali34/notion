@@ -94,7 +94,7 @@ function Login() {
         <div className="mt-6">
           <form
             onSubmit={loginUser}
-            className="w-[20rem] flex items-start flex-col gap-2 mt-8"
+            className="w-[20rem] max-sm:w-full flex items-start flex-col gap-2 mt-8"
           >
             <label className="text-sm font-[Notion-Regular] text-gray-700">
               Work email

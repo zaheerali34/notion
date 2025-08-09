@@ -97,6 +97,12 @@ function Header() {
               <li className="hover:bg-zinc-100 transition-all duration-200 py-1 px-3 rounded-sm cursor-pointer">
                 Request a demo
               </li>
+              <NavLink
+                to={"/login"}
+                className="bg-black cursor-pointer text-white px-4 py-2 rounded-md font-semibold hover:bg-zinc-800 transition-all duration-300 text-[10px] ml-3"
+              >
+                Log in
+              </NavLink>
             </ul>
           )}
         </nav>
@@ -110,7 +116,7 @@ function Header() {
           </NavLink>
           <NavLink
             to={"/signup"}
-            className="bg-black cursor-pointer text-white px-4 py-2 rounded-md text-[15px] font-semibold hover:bg-zinc-800 transition-all duration-300"
+            className="bg-black cursor-pointer text-white px-4 py-2 rounded-md text-[15px] font-semibold hover:bg-zinc-800 transition-all duration-300 max-sm:text-[10px]"
           >
             Get Notion free
           </NavLink>
